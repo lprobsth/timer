@@ -1,0 +1,7 @@
+base timer
+author Otto Vainio
+email otto@valjakko.net
+date 2018-20-12
+name timer
+desc Show content at this time
+url http://wiki.splitbrain.org/wiki:plugins
