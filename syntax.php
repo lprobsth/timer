@@ -28,7 +28,7 @@
     * What kind of syntax are we?
     */
     function getType(){
-      return 'substition';
+      return 'container';
     }
  
     function getSort(){ 
@@ -109,7 +109,11 @@
               $renderer->doc .= " Now:<b>" . date($conf['dformat']) . "</b>";
               $renderer->doc .= " To:" . date($conf['dformat'],$et);
             }
-              $renderer->doc .= p_render('xhtml',p_get_instructions($match),$info);
+              // get the standalone html code for this dokuwiki syntax section
+              $str = p_render('xhtml',p_get_instructions($match),$info);
+              // strip unnecessary paragraphs and new lines
+              $str = preg_replace('/^.*<p>(.*?)<\/p>.*$/s', '$1', $str);
+              $renderer->doc .= $str;
           } else {
             if ($prt>0) {
               if ($now<$st) {
